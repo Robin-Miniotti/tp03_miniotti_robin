@@ -1,0 +1,6 @@
+{
+  "root": "dist/tp3",
+  "routes": {
+    "/**": "index.html"
+  }
+}
