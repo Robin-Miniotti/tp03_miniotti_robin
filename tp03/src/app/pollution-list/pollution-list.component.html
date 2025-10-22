@@ -1,0 +1,25 @@
+<div class="pollution-container">
+
+  <h2>Liste des pollutions</h2>
+
+  <div *ngIf="selectedPollutionId === null" class="pollution-list">
+    <ul>
+      <li *ngFor="let pollution of pollutions$ | async">
+        <strong>{{ pollution.title }}:</strong>
+        <img [src]="pollution.photoUrl" alt="Photo de la pollution" class="pollution-photo"/>
+        <div class="action-buttons">
+          <button (click)="showDetails(pollution.id)" class="details-btn">Voir détails</button>
+          <button (click)="deletePollution(pollution.id)" class="delete-btn">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="selectedPollutionId !== null" class="details-section">
+    <div class="details-header">
+      <h3>Détails de la pollution</h3>
+      <button (click)="hideDetails()" class="close-btn">← Retour à la liste</button>
+    </div>
+    <app-pollution-details [pollutionId]="selectedPollutionId!"></app-pollution-details>
+  </div>
+</div>
